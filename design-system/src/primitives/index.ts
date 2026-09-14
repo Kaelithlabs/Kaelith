@@ -12,3 +12,10 @@ export type { TextProps } from './Text/Text';
 
 export { Heading } from './Heading/Heading';
 export type { HeadingProps } from './Heading/Heading';
+
+export { Divider } from './Divider/Divider';
+export type { DividerProps } from './Divider/Divider';
+
+export { Grid } from './Grid/Grid';
+export type { GridProps, GridColumnsResponsive } from './Grid/Grid';
+
