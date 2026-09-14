@@ -1,3 +1,4 @@
+/// <reference types="bun-types" />
 import { test, expect } from "bun:test";
 import { getInitials } from "./Avatar";
 

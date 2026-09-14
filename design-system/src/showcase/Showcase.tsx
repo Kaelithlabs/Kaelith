@@ -12,8 +12,17 @@ import {
   Alert,
   Spinner,
   Skeleton,
+  FormField,
+  Textarea,
+  Select,
+  Radio,
+  RadioGroup,
+  Tabs,
+  Tooltip,
+  Modal,
+  Avatar,
 } from '../components';
-import { Heading, Text, Inline } from '../primitives';
+import { Heading, Text, Inline, Grid, Divider, Box, Stack } from '../primitives';
 import styles from './Showcase.module.css';
 
 export interface ShowcaseProps {
@@ -50,8 +59,12 @@ export const Showcase: React.FC<ShowcaseProps> = ({
   onThemeChange,
 }) => {
   const [name, setName] = useState('');
+  const [role, setRole] = useState('developer');
+  const [bio, setBio] = useState('');
+  const [selectedRadio, setSelectedRadio] = useState('all');
   const [notifications, setNotifications] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const activeSwatches =
     theme === 'theme-a' ? THEME_A_SWATCHES : THEME_B_SWATCHES;
@@ -134,6 +147,25 @@ export const Showcase: React.FC<ShowcaseProps> = ({
         </section>
 
         <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>LAYOUT PRIMITIVES</h2>
+          <Stack gap="md">
+            <Heading as="h3" variant="heading">Grid System</Heading>
+            <Grid columns={{ sm: 1, md: 3 }} gap="md">
+              <Box className={styles.demoBox}>Grid Item 1</Box>
+              <Box className={styles.demoBox}>Grid Item 2</Box>
+              <Box className={styles.demoBox}>Grid Item 3</Box>
+            </Grid>
+            <Divider margin="md" />
+            <Heading as="h3" variant="heading">Divider Orientation</Heading>
+            <Inline gap="md" align="center">
+              <Text variant="body">Left Content Block</Text>
+              <Divider orientation="vertical" />
+              <Text variant="body">Right Content Block</Text>
+            </Inline>
+          </Stack>
+        </section>
+
+        <section className={styles.section}>
           <h2 className={styles.sectionTitle}>BUTTONS AND BADGES</h2>
           <Inline gap="md" align="center" wrap>
             <Button variant="primary">Primary</Button>
@@ -145,24 +177,59 @@ export const Showcase: React.FC<ShowcaseProps> = ({
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>FORM CONTROLS</h2>
+          <h2 className={styles.sectionTitle}>FORM FIELDS & INPUTS</h2>
           <div className={styles.formGrid}>
-            <Input
-              label="Name"
-              placeholder="Your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Switch
-              label="Notifications"
-              checked={notifications}
-              onChange={setNotifications}
-            />
-            <Checkbox
-              label="I accept the terms"
-              checked={termsAccepted}
-              onChange={setTermsAccepted}
-            />
+            <FormField label="Full Name" helperText="Enter your display name" required>
+              <Input
+                placeholder="Jane Doe"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </FormField>
+
+            <FormField label="Role" helperText="Select your primary system role">
+              <Select
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                options={[
+                  { value: 'developer', label: 'Software Developer' },
+                  { value: 'designer', label: 'UI/UX Designer' },
+                  { value: 'manager', label: 'Product Manager' },
+                ]}
+              />
+            </FormField>
+
+            <FormField label="Biography" helperText="Brief personal introduction">
+              <Textarea
+                placeholder="Write a few words about yourself..."
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                rows={3}
+              />
+            </FormField>
+
+            <RadioGroup
+              label="Notification Preference"
+              value={selectedRadio}
+              onChange={setSelectedRadio}
+            >
+              <Radio value="all" label="All Notifications" />
+              <Radio value="important" label="Important Only" />
+              <Radio value="none" label="Mute All" />
+            </RadioGroup>
+
+            <Inline gap="md" align="center">
+              <Switch
+                label="Email Updates"
+                checked={notifications}
+                onChange={setNotifications}
+              />
+              <Checkbox
+                label="I accept the terms of service"
+                checked={termsAccepted}
+                onChange={setTermsAccepted}
+              />
+            </Inline>
           </div>
         </section>
 
@@ -190,33 +257,136 @@ export const Showcase: React.FC<ShowcaseProps> = ({
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>FEEDBACK & LOADERS</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-            <Alert variant="info" title="Information">
-              This is an informational alert message.
-            </Alert>
-            <Alert variant="success" title="Success" onClose={() => {}}>
-              Operation completed successfully.
-            </Alert>
-            <Alert variant="warning" title="Warning">
-              Please double check your configuration.
-            </Alert>
-            <Alert variant="danger" title="Error">
-              An unexpected error has occurred.
-            </Alert>
-            <Inline gap="md" align="center">
-              <Spinner size="sm" />
-              <Spinner size="md" />
-              <Spinner size="lg" />
+          <Stack gap="md">
+            <Heading as="h3" variant="heading">Alert Variants</Heading>
+            <Stack gap="sm">
+              <Alert variant="info" title="Information">
+                System updates will take place tonight at 02:00 UTC.
+              </Alert>
+              <Alert variant="success" title="Success" onClose={() => {}}>
+                Configuration saved successfully.
+              </Alert>
+              <Alert variant="warning" title="Warning">
+                API rate limit threshold reached (85%).
+              </Alert>
+              <Alert variant="danger" title="Error">
+                Failed to establish database connection.
+              </Alert>
+            </Stack>
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Spinner Sizes</Heading>
+            <Inline gap="lg" align="center">
+              <Inline gap="xs" align="center">
+                <Spinner size="sm" />
+                <Text variant="caption">Small (sm)</Text>
+              </Inline>
+              <Inline gap="xs" align="center">
+                <Spinner size="md" />
+                <Text variant="caption">Medium (md)</Text>
+              </Inline>
+              <Inline gap="xs" align="center">
+                <Spinner size="lg" />
+                <Text variant="caption">Large (lg)</Text>
+              </Inline>
             </Inline>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Skeleton Loading Shapes</Heading>
+            <Stack gap="xs">
               <Skeleton variant="text" width="60%" />
               <Skeleton variant="rectangular" height="80px" />
               <Inline gap="md" align="center">
                 <Skeleton variant="circular" width="40px" height="40px" />
                 <Skeleton variant="text" width="200px" />
               </Inline>
-            </div>
-          </div>
+            </Stack>
+          </Stack>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>INTERACTIVE OVERLAYS & NAVIGATION</h2>
+          <Stack gap="md">
+            <Heading as="h3" variant="heading">Tabs Component</Heading>
+            <Tabs defaultValue="overview">
+              <Tabs.TabList aria-label="Showcase Navigation Tabs">
+                <Tabs.Tab value="overview">Overview</Tabs.Tab>
+                <Tabs.Tab value="analytics">Analytics</Tabs.Tab>
+                <Tabs.Tab value="settings">Settings</Tabs.Tab>
+              </Tabs.TabList>
+              <Tabs.TabPanel value="overview">
+                <Box className={styles.tabContent}>
+                  <Text variant="body">Overview panel content showing key system metrics and summary info.</Text>
+                </Box>
+              </Tabs.TabPanel>
+              <Tabs.TabPanel value="analytics">
+                <Box className={styles.tabContent}>
+                  <Text variant="body">Analytics panel data displaying real-time traffic statistics.</Text>
+                </Box>
+              </Tabs.TabPanel>
+              <Tabs.TabPanel value="settings">
+                <Box className={styles.tabContent}>
+                  <Text variant="body">Settings panel allowing user configuration of preference options.</Text>
+                </Box>
+              </Tabs.TabPanel>
+            </Tabs>
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Tooltips & Modal Trigger</Heading>
+            <Inline gap="md" align="center" wrap>
+              <Tooltip content="Click to launch interactive dialog modal" position="top">
+                <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+                  Open Modal
+                </Button>
+              </Tooltip>
+              <Tooltip content="Secondary action tooltip help text" position="right">
+                <Button variant="secondary">Hover Me (Right)</Button>
+              </Tooltip>
+              <Tooltip content="Bottom aligned helper text" position="bottom">
+                <Button variant="tertiary">Hover Me (Bottom)</Button>
+              </Tooltip>
+            </Inline>
+
+            <Modal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              title="Interactive Dialog Modal"
+              footer={
+                <Inline gap="sm" align="end">
+                  <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
+                    Cancel
+                  </Button>
+                  <Button variant="primary" onClick={() => setIsModalOpen(false)}>
+                    Confirm
+                  </Button>
+                </Inline>
+              }
+            >
+              <Text variant="body">
+                This is a modal dialog powered by accessible React Portals. It supports focus trapping, keyboard navigation (ESC key), and custom overlays.
+              </Text>
+            </Modal>
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Avatar Sizes & Variants</Heading>
+            <Inline gap="lg" align="center" wrap>
+              <Inline gap="sm" align="center">
+                <Avatar name="Alice Smith" size="sm" />
+                <Avatar name="Alice Smith" size="md" />
+                <Avatar name="Alice Smith" size="lg" />
+              </Inline>
+              <Divider orientation="vertical" />
+              <Inline gap="sm" align="center">
+                <Avatar name="Bob Johnson" size="sm" variant="square" />
+                <Avatar name="Bob Johnson" size="md" variant="square" />
+                <Avatar name="Bob Johnson" size="lg" variant="square" />
+              </Inline>
+            </Inline>
+          </Stack>
         </section>
       </main>
     </div>

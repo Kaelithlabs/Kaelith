@@ -4,7 +4,7 @@ import styles from './Tooltip.module.css';
 export interface TooltipProps {
   content: React.ReactNode;
   position?: 'top' | 'bottom' | 'left' | 'right';
-  children: React.ReactElement;
+  children: React.ReactElement<any>;
   className?: string;
   delay?: number;
 }
