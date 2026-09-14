@@ -43,3 +43,14 @@ export type { SpinnerProps } from './Spinner';
 export { Skeleton } from './Skeleton';
 export type { SkeletonProps } from './Skeleton';
 
+export { Tabs, TabList, Tab, TabPanel } from './Tabs';
+export type { TabsProps, TabListProps, TabProps, TabPanelProps } from './Tabs';
+
+export { Tooltip } from './Tooltip';
+export type { TooltipProps } from './Tooltip';
+
+export { Modal } from './Modal';
+export type { ModalProps } from './Modal';
+
+export { Avatar, getInitials } from './Avatar';
+export type { AvatarProps } from './Avatar';
