@@ -1,0 +1,49 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-xl, 32px) var(--space-md, 16px);
+  border-radius: var(--radius-md, 12px);
+  background-color: var(--color-bg-surface, #101010);
+  border: 1px dashed var(--color-border-subtle, #2A2A2A);
+  color: var(--color-text-primary, #FFFFFF);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--color-bg-surface-muted, #2A2A2A);
+  color: var(--color-text-secondary, #A0A0A0);
+  margin-bottom: var(--space-md, 16px);
+}
+
+.title {
+  margin: 0 0 var(--space-xs, 4px) 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-primary, #FFFFFF);
+}
+
+.description {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--color-text-secondary, #A0A0A0);
+  max-width: 400px;
+}
+
+.actionWrapper {
+  margin-top: var(--space-md, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
