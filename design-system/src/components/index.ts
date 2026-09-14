@@ -15,3 +15,9 @@ export type { CheckboxProps } from './Checkbox';
 
 export { Switch } from './Switch';
 export type { SwitchProps } from './Switch';
+
+export { Card, CardInfo, CardMetric } from './Card';
+export type { CardProps, CardInfoProps, CardMetricProps } from './Card';
+
+export { Carousel } from './Carousel';
+export type { CarouselProps, CarouselItem } from './Carousel';
