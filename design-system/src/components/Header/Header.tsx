@@ -18,15 +18,15 @@ export interface HeaderProps {
 }
 
 const DEFAULT_NAV_ITEMS: NavItem[] = [
-  { label: 'Produtos', href: '#produtos' },
-  { label: 'Sobre', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'Products', href: '#products' },
+  { label: 'About', href: '#about' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({
   brandTitle = 'Kaelith',
   navItems = DEFAULT_NAV_ITEMS,
-  actionLabel = 'Fale conosco',
+  actionLabel = 'Contact Us',
   onActionClick,
   className = '',
   children,
