@@ -1,23 +1,16 @@
-import React from 'react';
-import { Button, Badge, Header } from './components';
+import React, { useState, useEffect } from 'react';
+import { Showcase } from './showcase';
 
 export const App: React.FC = () => {
+  const [theme, setTheme] = useState<'theme-a' | 'theme-b'>('theme-a');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
   return (
-    <div>
-      <Header />
-      <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <h1>Core Components</h1>
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <Button variant="primary">Primary Button</Button>
-          <Button variant="secondary">Secondary Button</Button>
-          <Button variant="tertiary">Tertiary Button</Button>
-          <Button disabled>Disabled</Button>
-        </div>
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <Badge variant="default">Default Badge</Badge>
-          <Badge variant="accent">Accent Badge</Badge>
-        </div>
-      </div>
+    <div data-theme={theme} style={{ minHeight: '100vh', backgroundColor: 'var(--color-bg-app)', color: 'var(--color-text-primary)' }}>
+      <Showcase theme={theme} onThemeChange={setTheme} />
     </div>
   );
 };
