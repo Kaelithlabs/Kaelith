@@ -36,10 +36,10 @@ const THEME_B_SWATCHES = [
 ];
 
 const CAROUSEL_ITEMS: CarouselItem[] = [
-  { id: 'spm', title: 'SPM', subtitle: 'Modernizacao web' },
-  { id: 'gatebridge', title: 'GateBridge', subtitle: 'Proxy reverso' },
-  { id: 'kuro', title: 'Kuro', subtitle: 'Console modular' },
-  { id: 'bitcast', title: 'Bitcast', subtitle: 'Em definicao' },
+  { id: 'spm', title: 'SPM', subtitle: 'Web Modernization' },
+  { id: 'gatebridge', title: 'GateBridge', subtitle: 'Reverse Proxy' },
+  { id: 'kuro', title: 'Kuro', subtitle: 'Modular Console' },
+  { id: 'bitcast', title: 'Bitcast', subtitle: 'Under Definition' },
 ];
 
 export const Showcase: React.FC<ShowcaseProps> = ({
@@ -80,16 +80,16 @@ export const Showcase: React.FC<ShowcaseProps> = ({
           <Header
             brandTitle="Kaelith"
             navItems={[
-              { label: 'Produtos', href: '#produtos' },
-              { label: 'Sobre', href: '#sobre' },
-              { label: 'Contato', href: '#contato' },
+              { label: 'Products', href: '#products' },
+              { label: 'About', href: '#about' },
+              { label: 'Contact', href: '#contact' },
             ]}
-            actionLabel="Fale conosco"
+            actionLabel="Contact Us"
           />
         </div>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>TIPOGRAFIA</h2>
+          <h2 className={styles.sectionTitle}>TYPOGRAPHY</h2>
           <div className={styles.typographyList}>
             <div className={styles.typographyItem}>
               <span className={styles.typographyMeta}>Display (34 / 700)</span>
@@ -100,22 +100,22 @@ export const Showcase: React.FC<ShowcaseProps> = ({
             <div className={styles.typographyItem}>
               <span className={styles.typographyMeta}>Heading (20 / 600)</span>
               <Heading as="h2" variant="heading">
-                Construindo com controle
+                Building with control
               </Heading>
             </div>
             <div className={styles.typographyItem}>
               <span className={styles.typographyMeta}>Body (14 / 500)</span>
-              <Text variant="body">Texto de corpo para paragrafos e descricoes.</Text>
+              <Text variant="body">Body text for paragraphs and descriptions.</Text>
             </div>
             <div className={styles.typographyItem}>
               <span className={styles.typographyMeta}>Caption (12 / 500)</span>
-              <Text variant="caption">Legenda ou rotulo auxiliar</Text>
+              <Text variant="caption">Caption or auxiliary label</Text>
             </div>
           </div>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>CORES</h2>
+          <h2 className={styles.sectionTitle}>COLORS</h2>
           <div className={styles.swatchGrid}>
             {activeSwatches.map((swatch) => (
               <div key={swatch.hex} className={styles.swatchCard}>
@@ -131,32 +131,32 @@ export const Showcase: React.FC<ShowcaseProps> = ({
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>BOTOES E BADGES</h2>
+          <h2 className={styles.sectionTitle}>BUTTONS AND BADGES</h2>
           <Inline gap="md" align="center" wrap>
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="tertiary">Tertiary</Button>
-            <Badge variant="default">Infraestrutura</Badge>
+            <Badge variant="default">Infrastructure</Badge>
             <Badge variant="accent">Hardware</Badge>
           </Inline>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>FORMULARIO</h2>
+          <h2 className={styles.sectionTitle}>FORM CONTROLS</h2>
           <div className={styles.formGrid}>
             <Input
-              label="Nome"
-              placeholder="Seu nome"
+              label="Name"
+              placeholder="Your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <Switch
-              label="Notificacoes"
+              label="Notifications"
               checked={notifications}
               onChange={setNotifications}
             />
             <Checkbox
-              label="Aceito os termos"
+              label="I accept the terms"
               checked={termsAccepted}
               onChange={setTermsAccepted}
             />
@@ -169,17 +169,17 @@ export const Showcase: React.FC<ShowcaseProps> = ({
             <Card>
               <Card.Info
                 title="GateBridge"
-                description="Proxy reverso concorrente construido com Java Loom."
+                description="Concurrent reverse proxy built with Java Loom."
               />
             </Card>
             <Card>
-              <Card.Metric label="Projetos ativos" value="4" />
+              <Card.Metric label="Active projects" value="4" />
             </Card>
           </div>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>CARROSSEL</h2>
+          <h2 className={styles.sectionTitle}>CAROUSEL</h2>
           <div className={styles.carouselWrapper}>
             <Carousel items={CAROUSEL_ITEMS} />
           </div>
