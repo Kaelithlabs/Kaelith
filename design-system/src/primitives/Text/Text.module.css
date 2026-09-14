@@ -1,0 +1,44 @@
+.text {
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.variant-body {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+.variant-caption {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+}
+
+.variant-label {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  font-weight: 600;
+}
+
+.color-primary {
+  color: var(--color-text-primary);
+}
+
+.color-secondary {
+  color: var(--color-text-secondary);
+}
+
+.color-muted {
+  color: var(--color-text-muted);
+}
+
+.weight-medium {
+  font-weight: 500;
+}
+
+.weight-semibold {
+  font-weight: 600;
+}
+
+.weight-bold {
+  font-weight: 700;
+}
