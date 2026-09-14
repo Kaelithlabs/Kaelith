@@ -72,3 +72,19 @@ export type { ProgressProps, ProgressVariant, ProgressSize } from './Progress';
 export { EmptyState } from './EmptyState';
 export type { EmptyStateProps } from './EmptyState';
 
+export { DropdownMenu, DropdownTrigger, Menu, MenuItem, MenuSeparator, useDropdownContext } from './Dropdown';
+export type {
+  DropdownMenuProps,
+  DropdownTriggerProps,
+  MenuProps,
+  MenuItemProps,
+  MenuSeparatorProps,
+  DropdownContextValue,
+} from './Dropdown';
+
+export { Popover } from './Popover';
+export type { PopoverProps } from './Popover';
+
+export { Drawer } from './Drawer';
+export type { DrawerProps } from './Drawer';
+
