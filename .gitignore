@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+.bun/
+
+# Build outputs
+dist/
+build/
+
+# Superpowers directory & docs
+superpowers/
+docs/superpowers/
+
+# Environment & local files
+.env
+.env.local
+*.log
+
+# Editor directories
+.vscode/
+.idea/
+.DS_Store
