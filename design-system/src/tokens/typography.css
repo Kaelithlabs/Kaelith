@@ -1,0 +1,15 @@
+:root {
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-display: 34px;
+  --font-weight-display: 700;
+  --line-height-display: 1.2;
+  --font-size-heading: 20px;
+  --font-weight-heading: 600;
+  --line-height-heading: 1.3;
+  --font-size-body: 14px;
+  --font-weight-body: 500;
+  --line-height-body: 1.5;
+  --font-size-caption: 12px;
+  --font-weight-caption: 500;
+  --line-height-caption: 1.4;
+}

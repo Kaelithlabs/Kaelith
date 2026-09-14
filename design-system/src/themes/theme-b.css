@@ -1,0 +1,25 @@
+[data-theme="theme-b"] {
+  --color-bg-app: #FFFFFF;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-elevated: #F4F8FC;
+  --color-bg-surface-muted: #EAF6FF;
+  --color-border-subtle: #E2E8F0;
+  --color-border-strong: #9BD4F5;
+  --color-text-primary: #1C2B36;
+  --color-text-secondary: #5B6B75;
+  --color-text-muted: #9BD4F5;
+  --color-accent-primary: #4FA8E0;
+  --color-accent-foreground: #FFFFFF;
+  --color-badge-bg: #EAF6FF;
+  --color-badge-text: #1C6FA6;
+  --color-input-bg: #1C2B36;
+  --color-input-border: #4FA8E0;
+  --color-switch-active: #4FA8E0;
+  --color-switch-bg: #EAF6FF;
+  --color-checkbox-active: #4FA8E0;
+  --color-checkbox-bg: #EAF6FF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-border: #4FA8E0;
+  --color-button-secondary-text: #4FA8E0;
+  --color-button-tertiary-text: #1C2B36;
+}
