@@ -9,6 +9,9 @@ import {
   Card,
   Carousel,
   CarouselItem,
+  Alert,
+  Spinner,
+  Skeleton,
 } from '../components';
 import { Heading, Text, Inline } from '../primitives';
 import styles from './Showcase.module.css';
@@ -182,6 +185,37 @@ export const Showcase: React.FC<ShowcaseProps> = ({
           <h2 className={styles.sectionTitle}>CAROUSEL</h2>
           <div className={styles.carouselWrapper}>
             <Carousel items={CAROUSEL_ITEMS} />
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>FEEDBACK & LOADERS</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
+            <Alert variant="info" title="Information">
+              This is an informational alert message.
+            </Alert>
+            <Alert variant="success" title="Success" onClose={() => {}}>
+              Operation completed successfully.
+            </Alert>
+            <Alert variant="warning" title="Warning">
+              Please double check your configuration.
+            </Alert>
+            <Alert variant="danger" title="Error">
+              An unexpected error has occurred.
+            </Alert>
+            <Inline gap="md" align="center">
+              <Spinner size="sm" />
+              <Spinner size="md" />
+              <Spinner size="lg" />
+            </Inline>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
+              <Skeleton variant="text" width="60%" />
+              <Skeleton variant="rectangular" height="80px" />
+              <Inline gap="md" align="center">
+                <Skeleton variant="circular" width="40px" height="40px" />
+                <Skeleton variant="text" width="200px" />
+              </Inline>
+            </div>
           </div>
         </section>
       </main>
