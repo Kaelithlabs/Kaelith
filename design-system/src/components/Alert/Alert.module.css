@@ -1,0 +1,115 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  border-left-width: 4px;
+  font-family: var(--font-family);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Variants */
+.info {
+  background-color: var(--color-status-info-bg);
+  border-color: var(--color-status-info-border);
+  border-left-color: var(--color-status-info);
+  color: var(--color-text-primary);
+}
+
+.info .icon {
+  color: var(--color-status-info);
+}
+
+.success {
+  background-color: var(--color-status-success-bg);
+  border-color: var(--color-status-success-border);
+  border-left-color: var(--color-status-success);
+  color: var(--color-text-primary);
+}
+
+.success .icon {
+  color: var(--color-status-success);
+}
+
+.warning {
+  background-color: var(--color-status-warning-bg);
+  border-color: var(--color-status-warning-border);
+  border-left-color: var(--color-status-warning);
+  color: var(--color-text-primary);
+}
+
+.warning .icon {
+  color: var(--color-status-warning);
+}
+
+.danger {
+  background-color: var(--color-status-danger-bg);
+  border-color: var(--color-status-danger-border);
+  border-left-color: var(--color-status-danger);
+  color: var(--color-text-primary);
+}
+
+.danger .icon {
+  color: var(--color-status-danger);
+}
+
+/* Internal Layout */
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.title {
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  line-height: var(--line-height-body);
+}
+
+.body {
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+}
+
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: var(--space-xs);
+  margin: -4px -4px -4px 0;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  color: var(--color-text-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}

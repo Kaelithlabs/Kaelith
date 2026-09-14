@@ -2,4 +2,21 @@
   /* Primitive Color Palette Defaults */
   --color-primitive-black: #000000;
   --color-primitive-white: #ffffff;
+
+  /* Status Colors */
+  --color-status-info: #3b82f6;
+  --color-status-info-bg: rgba(59, 130, 246, 0.12);
+  --color-status-info-border: rgba(59, 130, 246, 0.4);
+
+  --color-status-success: #22c55e;
+  --color-status-success-bg: rgba(34, 197, 94, 0.12);
+  --color-status-success-border: rgba(34, 197, 94, 0.4);
+
+  --color-status-warning: #f59e0b;
+  --color-status-warning-bg: rgba(245, 158, 11, 0.12);
+  --color-status-warning-border: rgba(245, 158, 11, 0.4);
+
+  --color-status-danger: #ef4444;
+  --color-status-danger-bg: rgba(239, 68, 68, 0.12);
+  --color-status-danger-border: rgba(239, 68, 68, 0.4);
 }
