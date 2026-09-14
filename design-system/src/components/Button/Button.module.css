@@ -1,0 +1,102 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  box-sizing: border-box;
+}
+
+/* Sizes */
+.sm {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  height: 32px;
+}
+
+.md {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  height: 40px;
+}
+
+.lg {
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: 600;
+  height: 48px;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--color-accent-primary);
+  color: var(--color-accent-foreground);
+  border-color: transparent;
+}
+
+.primary:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.primary:active:not(:disabled) {
+  opacity: 0.8;
+  transform: translateY(1px);
+}
+
+.secondary {
+  background-color: var(--color-button-secondary-bg);
+  color: var(--color-button-secondary-text);
+  border-color: var(--color-button-secondary-border);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-bg-surface-muted);
+}
+
+.secondary:active:not(:disabled) {
+  opacity: 0.8;
+  transform: translateY(1px);
+}
+
+.tertiary {
+  background-color: transparent;
+  color: var(--color-button-tertiary-text);
+  border-color: transparent;
+}
+
+.tertiary:hover:not(:disabled) {
+  background-color: var(--color-bg-surface-muted);
+}
+
+.tertiary:active:not(:disabled) {
+  opacity: 0.8;
+  transform: translateY(1px);
+}
+
+/* States & Modifiers */
+.fullWidth {
+  width: 100%;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+.disabled,
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

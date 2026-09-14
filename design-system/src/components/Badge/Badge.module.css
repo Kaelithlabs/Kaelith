@@ -1,0 +1,23 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  padding: var(--space-xs) var(--space-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-caption);
+  line-height: var(--line-height-caption);
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.default {
+  background-color: var(--color-badge-bg);
+  color: var(--color-badge-text);
+}
+
+.accent {
+  background-color: var(--color-accent-primary);
+  color: var(--color-accent-foreground);
+}
