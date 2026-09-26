@@ -21,6 +21,29 @@ import {
   Tooltip,
   Modal,
   Avatar,
+  ToastProvider,
+  useToast,
+  Progress,
+  EmptyState,
+  DropdownMenu,
+  DropdownTrigger,
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  Popover,
+  Drawer,
+  Breadcrumbs,
+  BreadcrumbItem,
+  Pagination,
+  Sidebar,
+  SidebarNav,
+  SidebarItem,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
 } from '../components';
 import { Heading, Text, Inline, Grid, Divider, Box, Stack } from '../primitives';
 import styles from './Showcase.module.css';
@@ -54,6 +77,21 @@ const CAROUSEL_ITEMS: CarouselItem[] = [
   { id: 'bitcast', title: 'Bitcast', subtitle: 'Under Definition' },
 ];
 
+const ToastDemo: React.FC = () => {
+  const toast = useToast();
+
+  return (
+    <Inline gap="sm" wrap>
+      <Button variant="primary" onClick={() => toast.success('Your changes are saved.', { title: 'Saved' })}>
+        Show success toast
+      </Button>
+      <Button variant="secondary" onClick={() => toast.warning('Review the remaining settings.', { title: 'Needs attention' })}>
+        Show warning toast
+      </Button>
+    </Inline>
+  );
+};
+
 export const Showcase: React.FC<ShowcaseProps> = ({
   theme = 'theme-a',
   onThemeChange,
@@ -65,6 +103,9 @@ export const Showcase: React.FC<ShowcaseProps> = ({
   const [notifications, setNotifications] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [currentPage, setCurrentPage] = useState(4);
 
   const activeSwatches =
     theme === 'theme-a' ? THEME_A_SWATCHES : THEME_B_SWATCHES;
@@ -386,6 +427,105 @@ export const Showcase: React.FC<ShowcaseProps> = ({
                 <Avatar name="Bob Johnson" size="lg" variant="square" />
               </Inline>
             </Inline>
+          </Stack>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>APPLICATION COMPONENTS</h2>
+          <Stack gap="md">
+            <Heading as="h3" variant="heading">Toast Notifications</Heading>
+            <ToastProvider>
+              <ToastDemo />
+            </ToastProvider>
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Progress</Heading>
+            <Stack gap="sm">
+              <Progress value={68} showValue aria-label="Deployment progress" />
+              <Progress value={100} variant="success" size="sm" aria-label="Build progress" />
+            </Stack>
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Empty State</Heading>
+            <EmptyState
+              title="No deployments yet"
+              description="Create a deployment to see its status and history here."
+              action={<Button variant="secondary">Create deployment</Button>}
+            />
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Dropdown Menu & Popover</Heading>
+            <Inline gap="md" align="center" wrap>
+              <DropdownMenu>
+                <DropdownTrigger>Project actions</DropdownTrigger>
+                <Menu>
+                  <MenuItem onClick={() => {}}>Rename project</MenuItem>
+                  <MenuSeparator />
+                  <MenuItem disabled>Archive project</MenuItem>
+                </Menu>
+              </DropdownMenu>
+              <Popover
+                trigger={<Button variant="secondary">Quick details</Button>}
+                content={<Text variant="body">The latest deployment completed successfully.</Text>}
+              />
+              <Button variant="tertiary" onClick={() => setIsDrawerOpen(true)}>
+                Open drawer
+              </Button>
+            </Inline>
+            <Drawer
+              isOpen={isDrawerOpen}
+              onClose={() => setIsDrawerOpen(false)}
+              title="Deployment details"
+              footer={<Button onClick={() => setIsDrawerOpen(false)}>Done</Button>}
+            >
+              <Text variant="body">Production deployment completed successfully.</Text>
+            </Drawer>
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Breadcrumbs & Pagination</Heading>
+            <Breadcrumbs>
+              <BreadcrumbItem href="#workspace">Workspace</BreadcrumbItem>
+              <BreadcrumbItem href="#projects">Projects</BreadcrumbItem>
+              <BreadcrumbItem active>Kaelith Console</BreadcrumbItem>
+            </Breadcrumbs>
+            <Pagination currentPage={currentPage} totalPages={12} onPageChange={setCurrentPage} />
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Sidebar</Heading>
+            <div className={styles.sidebarDemo}>
+              <Sidebar
+                collapsed={isSidebarCollapsed}
+                onToggle={() => setIsSidebarCollapsed((collapsed) => !collapsed)}
+              >
+                <SidebarNav>
+                  <SidebarItem label="Overview" active href="#overview" />
+                  <SidebarItem label="Deployments" badge="3" href="#deployments" />
+                  <SidebarItem label="Settings" href="#settings" />
+                </SidebarNav>
+              </Sidebar>
+              <Box className={styles.sidebarContent}>
+                <Text variant="body">Workspace content</Text>
+              </Box>
+            </div>
+
+            <Divider margin="md" />
+
+            <Heading as="h3" variant="heading">Table</Heading>
+            <Table striped hoverable>
+              <Thead>
+                <Tr><Th scope="col">Service</Th><Th scope="col">Status</Th><Th scope="col">Region</Th></Tr>
+              </Thead>
+              <Tbody>
+                <Tr><Td>Gateway API</Td><Td>Healthy</Td><Td>us-east-1</Td></Tr>
+                <Tr><Td>Event worker</Td><Td>Deploying</Td><Td>eu-west-1</Td></Tr>
+                <Tr><Td>Metrics store</Td><Td>Healthy</Td><Td>ap-southeast-1</Td></Tr>
+              </Tbody>
+            </Table>
           </Stack>
         </section>
       </main>

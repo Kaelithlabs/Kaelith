@@ -88,3 +88,15 @@ export type { PopoverProps } from './Popover';
 export { Drawer } from './Drawer';
 export type { DrawerProps } from './Drawer';
 
+export { Breadcrumbs, BreadcrumbItem } from './Breadcrumbs';
+export type { BreadcrumbsProps, BreadcrumbItemProps } from './Breadcrumbs';
+
+export { Pagination } from './Pagination';
+export type { PaginationProps } from './Pagination';
+
+export { Sidebar, SidebarNav, SidebarItem } from './Sidebar';
+export type { SidebarProps, SidebarNavProps, SidebarItemProps } from './Sidebar';
+
+export { Table, Thead, Tbody, Tr, Th, Td } from './Table';
+export type { TableProps } from './Table';
+

@@ -1,0 +1,42 @@
+.wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.head {
+  background: var(--color-bg-surface-elevated);
+  color: var(--color-text-secondary);
+}
+
+.cell {
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--space-sm) var(--space-md);
+  vertical-align: middle;
+}
+
+.headerCell {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.table tbody tr:last-child .cell {
+  border-bottom: 0;
+}
+
+.striped tbody tr:nth-child(even) {
+  background: var(--color-bg-surface-elevated);
+}
+
+.hoverable tbody tr:hover {
+  background: var(--color-bg-surface-muted);
+}
