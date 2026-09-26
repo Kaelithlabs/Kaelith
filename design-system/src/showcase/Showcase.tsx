@@ -46,6 +46,7 @@ import {
   Td,
 } from '../components';
 import { Heading, Text, Inline, Grid, Divider, Box, Stack } from '../primitives';
+import { LandingPageExamples } from './LandingPageExamples';
 import styles from './Showcase.module.css';
 
 export interface ShowcaseProps {
@@ -77,6 +78,64 @@ const CAROUSEL_ITEMS: CarouselItem[] = [
   { id: 'bitcast', title: 'Bitcast', subtitle: 'Under Definition' },
 ];
 
+const FEATURED_PROJECTS = [
+  {
+    id: 'gatebridge',
+    title: 'GateBridge',
+    category: 'EDGE NETWORK',
+    description: 'Concurrent reverse proxy routing traffic across resilient services.',
+    throughput: '8.4k',
+    availability: '99.98%',
+    region: 'US EAST / EU WEST',
+    routes: [
+      { label: 'Public API', tone: 'success' },
+      { label: 'Identity', tone: 'success' },
+      { label: 'Events', tone: 'warning' },
+    ],
+  },
+  {
+    id: 'spm',
+    title: 'SPM',
+    category: 'WEB PLATFORM',
+    description: 'A modernization workspace for services moving to the web.',
+    throughput: '2.1k',
+    availability: '99.95%',
+    region: 'GLOBAL EDGE',
+    routes: [
+      { label: 'Applications', tone: 'success' },
+      { label: 'Identity', tone: 'success' },
+      { label: 'Assets', tone: 'info' },
+    ],
+  },
+  {
+    id: 'kuro',
+    title: 'Kuro Console',
+    category: 'OPERATIONS',
+    description: 'A modular control surface for teams running critical systems.',
+    throughput: '640',
+    availability: '99.99%',
+    region: '3 ACTIVE ZONES',
+    routes: [
+      { label: 'Control plane', tone: 'success' },
+      { label: 'Metrics', tone: 'info' },
+      { label: 'Workers', tone: 'success' },
+    ],
+  },
+];
+
+const SPOTLIGHTS = [
+  { id: 'availability', label: 'PLATFORM HEALTH', value: '99.98%', title: 'Availability held steady', detail: '30-day production uptime', tone: 'success' },
+  { id: 'latency', label: 'EDGE NETWORK', value: '42 ms', title: 'Requests stay responsive', detail: 'p95 response time', tone: 'info' },
+  { id: 'deployments', label: 'DELIVERY', value: '128', title: 'Changes shipped safely', detail: 'successful deployments', tone: 'warning' },
+];
+
+const CUSTOMER_NOTES = [
+  { id: 'northstar', quote: 'We can trace every release from the first change to production.', name: 'Maya Chen', role: 'Platform Engineering' },
+  { id: 'fieldwork', quote: 'The operational view is finally as clear as the system is complex.', name: 'Jon Bell', role: 'Infrastructure Lead' },
+  { id: 'relay', quote: 'One workspace replaced a stack of disconnected status pages.', name: 'Ari Morgan', role: 'Site Reliability' },
+  { id: 'signal', quote: 'Our teams spot a risky rollout before it reaches customers.', name: 'Noor Patel', role: 'Release Operations' },
+];
+
 const ToastDemo: React.FC = () => {
   const toast = useToast();
 
@@ -103,6 +162,7 @@ export const Showcase: React.FC<ShowcaseProps> = ({
   const [notifications, setNotifications] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<(typeof FEATURED_PROJECTS)[number] | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [currentPage, setCurrentPage] = useState(4);
@@ -290,10 +350,118 @@ export const Showcase: React.FC<ShowcaseProps> = ({
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>CAROUSEL</h2>
-          <div className={styles.carouselWrapper}>
-            <Carousel items={CAROUSEL_ITEMS} />
-          </div>
+          <h2 className={styles.sectionTitle}>CAROUSEL VARIATIONS</h2>
+          <Stack gap="xl">
+            <div className={styles.carouselExample}>
+              <div className={styles.carouselExampleHeading}>
+                <Heading as="h3" variant="heading">Single slide</Heading>
+                <Text variant="caption">One project at a time, with direct slide navigation.</Text>
+              </div>
+              <Carousel items={CAROUSEL_ITEMS} ariaLabel="Featured projects" />
+            </div>
+
+            <Divider />
+
+            <div className={styles.carouselExample}>
+              <div className={styles.carouselExampleHeading}>
+                <Heading as="h3" variant="heading">Featured project card</Heading>
+                <Text variant="caption">Cover, category, summary, live routes, and a project action.</Text>
+              </div>
+              <Carousel ariaLabel="Featured Kaelith projects">
+                {FEATURED_PROJECTS.map((project) => (
+                  <article key={project.id} className={styles.projectFeatureSlide}>
+                    <div className={styles.projectCover} aria-label={`${project.title} service routing overview`}>
+                      <div className={styles.coverTopline}>
+                        <span className={styles.coverBrand}>KAELITH / SYSTEM MAP</span>
+                        <span className={styles.coverLive}><span /> LIVE</span>
+                      </div>
+                      <div className={styles.coverMap} aria-hidden="true">
+                        <div className={styles.coverIngress}>
+                          <span>INGRESS</span>
+                          <strong>{project.throughput}</strong>
+                          <small>req / min</small>
+                        </div>
+                        <div className={styles.coverBranches}>
+                          {project.routes.map((route) => (
+                            <span key={route.label} />
+                          ))}
+                        </div>
+                        <div className={styles.coverTargets}>
+                          {project.routes.map((route) => (
+                            <div key={route.label} className={styles.coverTarget}>
+                              <span>{route.label}</span>
+                              <i className={styles[`route${route.tone}`]} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className={styles.coverFooter}>
+                        <span>{project.region}</span>
+                        <strong>{project.availability} uptime</strong>
+                      </div>
+                    </div>
+                    <div className={styles.projectFeatureContent}>
+                      <Badge variant="accent">{project.category}</Badge>
+                      <h4>{project.title}</h4>
+                      <p>{project.description}</p>
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => {
+                          setSelectedProject(project);
+                          setIsModalOpen(true);
+                        }}
+                      >
+                        View project
+                      </Button>
+                    </div>
+                  </article>
+                ))}
+              </Carousel>
+            </div>
+
+            <Divider />
+
+            <div className={styles.carouselExample}>
+              <div className={styles.carouselExampleHeading}>
+                <Heading as="h3" variant="heading">Centered peek</Heading>
+                <Text variant="caption">Adjacent highlights stay in view to invite browsing.</Text>
+              </div>
+              <Carousel variant="peek" ariaLabel="Platform health highlights">
+                {SPOTLIGHTS.map((item) => (
+                  <article key={item.id} className={`${styles.spotlightSlide} ${styles[item.tone]}`}>
+                    <span className={styles.slideEyebrow}>{item.label}</span>
+                    <strong className={styles.slideValue}>{item.value}</strong>
+                    <div>
+                      <h4 className={styles.slideTitle}>{item.title}</h4>
+                      <p className={styles.slideDetail}>{item.detail}</p>
+                    </div>
+                  </article>
+                ))}
+              </Carousel>
+            </div>
+
+            <Divider />
+
+            <div className={styles.carouselExample}>
+              <div className={styles.carouselExampleHeading}>
+                <Heading as="h3" variant="heading">Two-up stories</Heading>
+                <Text variant="caption">Compare two customer notes in the same viewport.</Text>
+              </div>
+              <Carousel variant="multi" ariaLabel="Customer stories">
+                {CUSTOMER_NOTES.map((item) => (
+                  <article key={item.id} className={styles.quoteSlide}>
+                    <span className={styles.slideEyebrow}>CUSTOMER NOTE</span>
+                    <blockquote>{item.quote}</blockquote>
+                    <div className={styles.quoteByline}>
+                      <strong>{item.name}</strong>
+                      <span>{item.role}</span>
+                    </div>
+                  </article>
+                ))}
+              </Carousel>
+            </div>
+          </Stack>
         </section>
 
         <section className={styles.section}>
@@ -379,7 +547,10 @@ export const Showcase: React.FC<ShowcaseProps> = ({
             <Heading as="h3" variant="heading">Tooltips & Modal Trigger</Heading>
             <Inline gap="md" align="center" wrap>
               <Tooltip content="Click to launch interactive dialog modal" position="top">
-                <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+                <Button variant="primary" onClick={() => {
+                  setSelectedProject(null);
+                  setIsModalOpen(true);
+                }}>
                   Open Modal
                 </Button>
               </Tooltip>
@@ -394,7 +565,7 @@ export const Showcase: React.FC<ShowcaseProps> = ({
             <Modal
               isOpen={isModalOpen}
               onClose={() => setIsModalOpen(false)}
-              title="Interactive Dialog Modal"
+              title={selectedProject?.title ?? 'Interactive Dialog Modal'}
               footer={
                 <Inline gap="sm" align="end">
                   <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
@@ -407,7 +578,7 @@ export const Showcase: React.FC<ShowcaseProps> = ({
               }
             >
               <Text variant="body">
-                This is a modal dialog powered by accessible React Portals. It supports focus trapping, keyboard navigation (ESC key), and custom overlays.
+                {selectedProject?.description ?? 'This is a modal dialog powered by accessible React Portals. It supports focus trapping, keyboard navigation (ESC key), and custom overlays.'}
               </Text>
             </Modal>
 
@@ -528,6 +699,8 @@ export const Showcase: React.FC<ShowcaseProps> = ({
             </Table>
           </Stack>
         </section>
+
+        <LandingPageExamples />
       </main>
     </div>
   );
