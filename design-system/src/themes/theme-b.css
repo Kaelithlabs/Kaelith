@@ -1,25 +1,27 @@
-[data-theme="theme-b"] {
-  --color-bg-app: #FFFFFF;
+[data-theme="light"],
+[data-theme="theme-b"],
+.light {
+  --color-bg-app: #F8FAFC;
   --color-bg-surface: #FFFFFF;
-  --color-bg-surface-elevated: #F4F8FC;
-  --color-bg-surface-muted: #EAF6FF;
+  --color-bg-surface-elevated: #F1F5F9;
+  --color-bg-surface-muted: #E2E8F0;
   --color-border-subtle: #E2E8F0;
-  --color-border-strong: #9BD4F5;
-  --color-text-primary: #1C2B36;
-  --color-text-secondary: #5B6B75;
-  --color-text-muted: #9BD4F5;
-  --color-accent-primary: #4FA8E0;
+  --color-border-strong: #94A3B8;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+  --color-accent-primary: #0F172A;
   --color-accent-foreground: #FFFFFF;
-  --color-badge-bg: #EAF6FF;
-  --color-badge-text: #1C6FA6;
-  --color-input-bg: #1C2B36;
-  --color-input-border: #4FA8E0;
-  --color-switch-active: #4FA8E0;
-  --color-switch-bg: #EAF6FF;
-  --color-checkbox-active: #4FA8E0;
-  --color-checkbox-bg: #EAF6FF;
+  --color-badge-bg: #F1F5F9;
+  --color-badge-text: #0F172A;
+  --color-input-bg: #FFFFFF;
+  --color-input-border: #CBD5E1;
+  --color-switch-active: #0F172A;
+  --color-switch-bg: #E2E8F0;
+  --color-checkbox-active: #0F172A;
+  --color-checkbox-bg: #FFFFFF;
   --color-button-secondary-bg: transparent;
-  --color-button-secondary-border: #4FA8E0;
-  --color-button-secondary-text: #4FA8E0;
-  --color-button-tertiary-text: #1C2B36;
+  --color-button-secondary-border: #0F172A;
+  --color-button-secondary-text: #0F172A;
+  --color-button-tertiary-text: #0F172A;
 }

@@ -1,5 +1,7 @@
 :root,
-[data-theme="theme-a"] {
+[data-theme="dark"],
+[data-theme="theme-a"],
+.dark {
   --color-bg-app: #000000;
   --color-bg-surface: #101010;
   --color-bg-surface-elevated: #1A1A1A;
